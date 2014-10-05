@@ -4,155 +4,155 @@ var library = {
 
 	kids: [
 		{
-		label: "Help",
+		label: "帮助",
 		icon: "&#xE195;",
-		desc: "Help for the RegExr application. See the <b>Reference</b> for help with Regular Expressions.",
+		desc: "RegExr程序的帮助信息。 如欲了解正则表达式的信息请浏览 <b>参考文档</b> 。",
 		kids: [
 
 			{
-			label:"Video Tutorial",
-			desc:"Check out the three minute video tutorial for a quick introduction to all the features of RegExr."+
-				"<p><a href='javascript:regexr.showVideo();'>Click here</a> to watch the video.</p>"
+			label:"视频介绍",
+			desc:"观看简略介绍正则表达式特性的3分钟视频。"+
+				"<p><a href='javascript:regexr.showVideo();'>点击这里</a> 观看视频。</p>"
 			},
 			{
-			label:"About",
-			desc:"Created by <a href='http://twitter.com/gskinner/' target='_blank'>Grant Skinner</a> & the <a href='http://gskinner.com/' target='_blank'>gskinner</a> team, using the <a href='http://createjs.com/' target='_blank'>CreateJS</a> & <a href='http://codemirror.net/' target='_blank'>CodeMirror</a> libraries."+
-				"<p>You can provide feedback, log bugs, or access the source code of RegExr on <a href='http://github.com/gskinner/regexr/' target='_blank'>GitHub</a>.</p>"+
+			label:"关于",
+			desc:"由 <a href='http://twitter.com/gskinner/' target='_blank'>Grant Skinner</a> 和 <a href='http://gskinner.com/' target='_blank'>gskinner</a> 团队创建, 使用了 <a href='http://createjs.com/' target='_blank'>CreateJS</a> 和 <a href='http://codemirror.net/' target='_blank'>CodeMirror</a> 库。"+
+				"<p>你可以在 <a href='http://github.com/gskinner/regexr/' target='_blank'>GitHub</a> 上查看RegExr的源代码，还可以提交反馈信息和错误日志。</p>"+
 				// "Want to support RegExr updates, or buy us a beer as thanks? Feel free to <a href='#' target='_blank'>donate</a>."+ // TODO: link.
-				"<p>RegExr v1 is still online at <a href='v1/' target='_blank'>regexr.com/v1/</a>.</p>"
+				"<p>RegExr v1 依然在 <a href='http://regexr.com/v1/' target='_blank'>regexr.com/v1/</a> 这里运行着。</p>"
 			},
 			{
-			label:"RegEx engine",
-			desc:"While the core feature set of regular expressions is fairly consistent, different implementations (ex. Perl vs Java) may have different features or behaviours."+
-				"<p>RegExr uses your browser's RegExp engine for matching, and its syntax highlighting and documentation reflect the Javascript RegExp standard.</p>"
+			label:"正则引擎",
+			desc:"虽然正则式的语法是一致的，但在不同的执行环境 (比如 Perl 和 Java) 中可能存在不同的规则 (比如前瞻断言) 。"+
+				"<p>RegExr 使用您浏览器的正则表达式引擎进行匹配，它的语法高亮与文档均参照 Javascript 的正则表达式标准。</p>"
 			},
 			{
 			id:"infinite",
-			label:"The 'infinite' error",
-			desc:"The expression can match 0 characters, and therefore matches infinitely.",
-			ext:" <h1>Example:</h1><code>.*</code> can match an empty string of <code>0</code> characters, and therefore will match infinitely."
+			label:"'死循环' 错误",
+			desc:"这个正则表达式可以匹配空文本，使用它可能造成死循环。",
+			ext:" <h1>比如:</h1><code>.*</code> 可以匹配 <code>0</code> 个字符的空文本，使用这样的表达式可能造成ack等工具陷入死循环。"
 			},
 			{
 			id:"timeout",
-			label:"The 'timeout' error",
-			desc:"The expression took longer than 250ms to execute.",
-			ext:" For some expressions the time to execute grows exponentially, often due to nested quantifiers. <h1>Example:</h1> When <code>(a+)+Z</code> is executed on <code>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> it attempts to match any number of 'a' characters any number of times, which results in exponential growth."
+			label:"'超时' 错误",
+			desc:"执行这个表达式使用了超过 250ms 的时间",
+			ext:"对于一些表示数量的元字符嵌套的表达式，执行时间可能呈指数级增长。 <h1>比如:</h1> 当表达式 <code>(a+)+Z</code> 处理文本 <code>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> 时，匹配器在输入的末尾并没有检测到”Z”。外侧的限定符后退一次，内存的则前进一次，依然无法得到结果，如此重复。因此，匹配器逐步回退，并尝试所有的组合以找出匹配符号。它最终将返回(没有匹配的结果)，但是该过程的复杂性是指数型的(输入中添加一个字符加倍了运行时间)。"
 			},
 			{
-			label:"Getting started",
-			desc:"RegExr provides real-time visual results, syntax highlighting, tooltips, and undo/redo ({{getCtrlKey()}}-Z / Y) so it's easy and fun to explore Regular Expressions."+
-				"<p>Browse through the <b>Reference</b> and test different tokens to see what they do, then check out the <b>Examples</b> to see how tokens work together.</p>"
+			label:"开始使用",
+			desc:"RegExr 提供实时的效果展示、语法高亮、提示以及撤销、重做功能 ({{getCtrlKey()}}-Z / Y) ，使用它探索正则表达式是一件容易而愉快的事。"+
+				"<p>浏览 <b>参考文档</b> 并尝试不同的元字符，学习他们的作用；查看 <b>示例</b> 学习怎样把元字符组合成表达式。 </p>"
 			},
 			{
-			label:"Expression panel",
-			desc:"This is where you enter a regular expression to test. The results in the <b>Text</b> panel will update as you type. Roll over the expression for information on each token."+
-				"<p>The buttons to the right allow you to save & share your pattern, or edit the expression flags. Saved patterns can be updated for 24hrs.</p>"+
-				"<p>The results bubble will show the number of matches, or indicate errors.</p>"
+			label:"表达式面板",
+			desc:"这儿是您输入正则表达式的地方。在您输入的过程中， <b>文本</b> 面板的匹配结果将实时更新。鼠标在表达式上悬停可以看到当前所指的元字符的相关信息。"+
+				"<p>通过右边的按钮你可以保存、分享你的成果，编辑表达式的flag。保存的内容在24小时内可以更新。</p>"+
+				"<p>按钮下边的 结果 气泡会显示匹配的数量，或者在出现错误时显示错误的原因。</p>"
 			},
 			{
-			label:"Text panel",
-			desc:"This is where you enter text to test your expression against. Drag & drop a text file to load its contents."+
-				"<p>Matches will be highlighted as you type. Roll over a match for information on the match and its capture groups.</p>"+
-				"<p>Lighter colored caps at the start or end of a line indicate the match continues between lines.</p>"
+			label:"文本面板",
+			desc:"这儿是您输入需要正则表达式处理的文本的地方。您可以拖拽一个文本文件到这里以载入它所包含的文本内容。"+
+				"<p>匹配成功的文本将会高亮显示，鼠标悬停在上面可以查看它的相关信息和捕获组。</p>"+
+				"<p>如果匹配文本无法用一行显示，自动折行处会用浅色标记。</p>"
 			},
 			{
-			label:"Substitution panel",
-			desc:"Click the <b>Substitution</b> title bar below the <b>Text</b> panel to show or hide the <b>Substitution</b> panel."+
-				"<p>Matches in the <b>Text</b> panel are replaced by the substitution string & displayed as you type.</p>"+
-				"<p>Escaped characters compatible with the JS string format are supported, such as <code>\\n</code>, <code>\\t</code> & <code>\\u0009</code>.</p>"+
-				"<p>Roll over tokens in the substitution string for information.</p>"
+			label:"替换面板",
+			desc:"点击 <b>文本</b> 栏下方的 <b>替换</b> 栏来展开或者收起 <b>替换</b> 面板。"+
+				"<p><b>文本</b> 面板中的匹配文本会在替换面板中被你输入的替换表达式所替换。</p>"+
+				"<p>转义字符与JS兼容，比如 <code>\\n</code> 、 <code>\\t</code> 和 <code>\\u0009</code>等</p>"+
+				"<p>鼠标在替换表达式上悬停可以查看当前指向的元字符的相关信息。</p>"
 			},
 			{
-			label:"Library panel",
-			desc:"The <b>Library</b> includes help content and a reference that includes info on all regular expression tokens and flags."+
-				"<p>Tap a selected item in the reference to insert it into your <b>Expression</b>. Click the <span class='icon'>&#xE212;</span> beside an example to load it.</p>"+
-				"<p>The library also includes example patterns, searchable community submissions, and your saved favourites.</p>"
+			label:"资料库面板",
+			desc:"<b>资料库</b> 面板中包含了帮助文档和完整的正则表达式元字符与flag的参考文档。"+
+				"<p>点击参考文档中一个已被选中的元字符可以将它插入 <b>表达式</b> 面板的表达式中。 点击示例右边的 <span class='icon'>&#xE212;</span> 按钮将示例导入表达式面板中。</p>"+
+				"<p>资料库中还包含了完整的示例、社区意见搜索和您的收藏夹。</p>"
 			}
 		]
 		},
 
 		{
-		label: "Reference",
+		label: "参考文档",
 		id: "reference",
 		icon: "&#xE072;",
-		desc: "Information on all of the tokens available to create regular expressions."
-			+"<p>Click a selected item again to insert it into your Expression.</p>"
-			+"<p>Click the <span class='icon'>&#xE212;</span> beside an example to load it.</p>",
+		desc: "这里有所有用于构建正则表达式的元字符的相关信息。"
+			+"<p>再次点击一个已被选中的元字符可以将它插入您的表达式中。</p>"
+			+"<p>点击示例右边的 <span class='icon'>&#xE212;</span> 按钮将示例导入表达式面板中。</p>",
 		target:"expr",
 		kids: [
 			{
-			label: "Character classes",
+			label: "字符类",
 			id: "charclasses",
-			desc: "Character classes match a character from a specific set. There are a number of predefined character classes and you can also define your own sets.",
+			desc: "字符类的元字符可以匹配一组特定的字符。有一些预定义的元字符可以使用，或者你也可以自己定义特定字符的范围。",
 			kids: [
 				{
 				id:"dot",
-				desc:"Matches any character except line breaks.",
-				ext:" Equivalent to <code>[^\\n\\r]</code>.",
+				desc:"匹配任何字符，除了换行符。",
+				ext:"与 <code>[^\\n\\r]</code> 等价。",
 				example:[".", "glib jocks vex dwarves!"],
 				token:"."
 				},
 				{
 				label:"match any",
-				desc:"A character set that can be used to match any character, including line breaks."+
-					"<p>An alternative is <code>[^]</code>, but it is not supported in all browsers.</p>",
+				desc:"可以匹配任何字符，包括换行符。"+
+					"<p>它的另一种写法是 <code>[^]</code> ，不过不是所有浏览器都支持。</p>",
 				example:["[\\s\\S]", "glib jocks vex dwarves!"],
 				token:"[\\s\\S]"
 				},
 				{
 				id:"word",
-				desc:"Matches any word character (alphanumeric & underscore).",
-				ext:" Only matches low-ascii characters (no accented or non-roman characters). Equivalent to <code>[A-Za-z0-9_]</code>",
+				desc:"可以匹配任何单词的组成字符 (字母、数字以及下划线).",
+				ext:"只会匹配 low-ascii 字符 (无重音符号和非罗马的字符)。 等价于 <code>[A-Za-z0-9_]</code>",
 				example:["\\w","bonjour, mon fr\u00E8re"],
 				token:"\\w"
 				},
 				{
 				id:"notword",
 				label: "not word",
-				desc:"Matches any character that is not a word character (alphanumeric & underscore).",
-				ext:" Equivalent to <code>[^A-Za-z0-9_]</code>",
+				desc:"匹配不是单词组成部分 (字母、数字以及下划线)的字符。",
+				ext:" 等价于 <code>[^A-Za-z0-9_]</code>",
 				example:["\\W","bonjour, mon fr\u00E8re"],
 				token:"\\W"
 				},
 				{
 				id:"digit",
-				desc:"Matches any digit character (0-9).",
-				ext:" Equivalent to <code>[0-9]</code>.",
+				desc:"匹配任意数字 (0-9)。",
+				ext:"等价于 <code>[0-9]</code>。",
 				example:["\\d","+1-(444)-555-1234"],
 				token:"\\d"
 				},
 				{
 				id:"notdigit",
 				label: "not digit",
-				desc:"Matches any character that is not a digit character (0-9).",
-				ext:" Equivalent to <code>[^0-9]</code>.",
+				desc:"匹配任意不是数字(0-9)的字符。",
+				ext:"等价于 <code>[^0-9]</code>。",
 				example:["\\D","+1-(444)-555-1234"],
 				token:"\\D"
 				},
 				{
 				id:"whitespace",
-				desc:"Matches any whitespace character (spaces, tabs, line breaks).",
+				desc:"匹配任意空白符 (空格, tab, 换行符)。",
 				example:["\\s", "glib jocks vex dwarves!"],
 				token:"\\s"
 				},
 				{
 				id:"notwhitespace",
 				label: "not whitespace",
-				desc:"Matches any character that is not a whitespace character (spaces, tabs, line breaks).",
+				desc:"匹配任何非空白符 (空格, tab, 换行符)的字符。",
 				example:["\\S", "glib jocks vex dwarves!"],
 				token:"\\S"
 				},
 				{
 				id:"set",
 				label: "character set",
-				desc:"Match any character in the set.",
+				desc:"匹配设定的特定字符包含的任意字符。",
 				example:["[aeiou]","glib jocks vex dwarves!"],
 				token:"[ABC]"
 				},
 				{
 				id:"setnot",
 				label: "negated set",
-				desc:"Match any character that is not in the set.",
+				desc:"匹配设定的特定字符不包含的任意字符。",
 				example:["[^aeiou]","glib jocks vex dwarves!"],
 				token:"[^ABC]"
 				},
@@ -160,97 +160,97 @@ var library = {
 				id:"range",
 				tip:"Matches a character in the range {{getChar(prev)}} to {{getChar(next)}} (char code {{prev.code}} to {{next.code}}).",
 				example:["[g-s]","abcdefghijklmnopqrstuvwxyz"],
-				desc: "Matches a character having a character code between the two specified characters inclusive.",
+				desc: "匹配设定的特定字符范围所包含的任意字符。",
 				token:"[A-Z]"
 				}
 			]
 			},
 
 			{
-			label:"Anchors",
+			label:"锚",
 			id:"anchors",
-			desc:"Anchors are unique in that they match a position within a string, not a character.",
+			desc:"锚匹配的是字符串中的位置，而不是某个特定的字符。",
 			kids:[
 				{
 				id:"bof",
 				label:"beginning",
-				desc:"Matches the beginning of the string, or the beginning of a line if the multiline flag (<code>m</code>) is enabled.",
-				ext:" This matches a position, not a character.",
+				desc:"匹配字符串的开始位置，或者当multiline flag (<code>m</code>) 开启时匹配行的开始位置。",
+				ext:"它匹配的是一个位置，而不是一个字符。",
 				 example:["^\\w+","she sells seashells"],
 				token:"^"
 				},
 				{
 				id:"eof",
 				label:"end",
-				desc:"Matches the end of the string, or the end of a line if the multiline flag (<code>m</code>) is enabled.",
-				ext:" This matches a position, not a character.",
+				desc:"匹配字符串的结束位置，或者当multiline flag (<code>m</code>) 开启时匹配行的结束位置。",
+				ext:"它匹配的是一个位置，而不是一个字符。",
 				example:["\\w+$","she sells seashells"],
 				token:"$"
 				},
 				{
 				id:"wordboundary",
 				label:"word boundary",
-				desc:"Matches a word boundary position such as whitespace, punctuation, or the start/end of the string.",
-				ext:" This matches a position, not a character.",
+				desc:"匹配一个单词边界的位置，如空格、标点符号或字符串的开始和结束。",
+				ext:"它匹配的是一个位置，而不是一个字符。",
 				example:["s\\b","she sells seashells"],
 				token:"\\b"
 				},
 				{
 				id:"notwordboundary",
 				label: "not word boundary",
-				desc:"Matches any position that is not a word boundary.",
-				ext:" This matches a position, not a character.",
+				desc:"匹配一个不是单词边界的位置。",
+				ext:"它匹配的是一个位置，而不是一个字符。",
 				example:["s\\B","she sells seashells"],
 				token:"\\B"
 				}
 			]
 			},
 			{
-			label: "Escaped characters",
+			label: "转义字符",
 			id:"escchars",
-			desc: "Some characters have special meaning in regular expressions and must be escaped. All escaped characters begin with the <code>\\</code> character.<br/><br/> Within a character set, only <code>\\</code>, <code>-</code>, and <code>]</code> need to be escaped.",
+			desc: "有一些字符在正则表达式中拥有特殊含义，想匹配他们必须转义。所有转义字符以 <code>\\</code> 字符开头。<br/><br/> 在 character set 中，只有 <code>\\</code> 、 <code>-</code> 、和 <code>]</code> 需要转义。",
 			kids: [
 				{
 				id:"escoctal",
 				label:"octal escape",
-				desc:"Octal escaped character in the form <code>\\000</code>.",
-				ext:" Value must be less than 255 (<code>\\377</code>).",
+				desc:"类似 <code>\\000</code> 形式的是八进制转义字符。",
+				ext:"其中数字的十进制值必须小于255 (<code>\\377</code>).",
 				example:["\\251","RegExr is \u00A92014"],
 				token:"\\000"
 				},
 				{
 				id:"eschexadecimal",
 				label:"hexadecimal escape",
-				desc:"Hexadecimal escaped character in the form <code>\\xFF</code>.",
+				desc:"类似 <code>\\xFF</code> 形式的是八进制转义字符。",
 				example:["\\xA9","RegExr is \u00A92014"],
 				token:"\\xFF"
 				},
 				{
 				id:"escunicode",
 				label:"unicode escape",
-				desc:"Unicode escaped character in the form <code>\\uFFFF</code>.",
+				desc:"类似 <code>\\uFFFF</code> 形式的是Unicode转义字符。",
 				example:["\\u00A9","RegExr is \u00A92014"],
 				token:"\\uFFFF"
 				},
 				{
 				id:"esccontrolchar",
 				label:"control character escape",
-				desc:"Escaped control character in the form <code>\\cZ</code>.",
-				ext:" This can range from <code>\\cA</code> (NULL, char code 0) to <code>\\cZ</code> (EM, char code 25). <h1>Example:</h1><code>\\cI</code> matches TAB (char code 9).",
+				desc:"类似 <code>\\cZ</code> 形式的是转义控制字符。",
+				ext:"您可以使用 <code>\\cA</code> (NULL, 字符代码为 0) 到 <code>\\cZ</code> (EM, 字符代码为 25). <h1>Example:</h1><code>\\cI</code> 匹配 TAB (字符代码为 9).",
 				token:"\\cI"
 				}
 			]
 			},
 			{
-			label: "Groups & Lookaround",
+			label: "捕获组和零宽断言",
 			id:"groups",
-			desc: "Groups allow you to combine a sequence of tokens to operate on them together. Capture groups can be referenced by a backreference and accessed separately in the results."+
-				 "<hr/>Lookaround lets you match a group without including it in the result.",
+			desc: "捕获组可以顺序标记元字符，通过 backreference 可以使用捕获组中元字符匹配到的文本。"+
+				 "<hr/>零宽断言可以匹配一个位置，但匹配的内容不作为匹配结果输出。",
 			kids: [
 				{
 				id:"group",
 				label: "capturing group",
-				desc: "Groups multiple tokens together and creates a capture group for extracting a substring or using a backreference.",
+				desc: "将多个元字符组合成一个捕获组，用于提取一个特定文本或者使用 backreference 引用捕获内容。",
 				example:["(ha)+","hahaha haa hah!"],
 				token:"(ABC)"
 				},
@@ -258,41 +258,41 @@ var library = {
 				id:"backref",
 				label:"backreference",
 				tip:"Matches the results of capture group #{{group.num}}.",
-				desc:"Matches the results of a previous capture group. For example <code>\\1</code> matches the results of the first capture group & <code>\\3</code> matches the third.",
+				desc:"匹配相应的捕获组捕获到的内容。 比如 <code>\\1</code> 匹配第一个捕获组所匹配的内容， <code>\\3</code> 匹配第三个捕获组所匹配的",
 				example:["(\\w)a\\1","hah dad bad dab gag gab"],
 				token:"\\1"
 				},
 				{
 				id:"noncapgroup",
 				label: "non-capturing group",
-				desc:"Groups multiple tokens together without creating a capture group.",
+				desc:"不捕获匹配的文本，也不给此分组分配组号。",
 				example:["(?:ha)+","hahaha haa hah!"],
 				token:"(?:ABC)"
 				},
 				{
 				id:"poslookahead",
 				label: "positive lookahead",
-				desc:"Matches a group after the main expression without including it in the result.",
+				desc:"断言自身出现的位置的后面能匹配表达式，不输出匹配内容。",
 				example:["\\d(?=px)","1pt 2px 3em 4px"],
 				token:"(?=ABC)"
 				},
 				{
 				id:"neglookahead",
 				label: "negative lookahead",
-				desc:"Specifies a group that can not match after the main expression (if it matches, the result is discarded).",
+				desc:"断言自身出现的位置的后面能匹配表达式 (如果它匹配成功，则这个文本不是匹配结果).",
 				example:["\\d(?!px)","1pt 2px 3em 4px"],
 				token:"(?!ABC)"
 				},
 				{
 				id:"poslookbehind",
 				label: "positive lookbehind*",
-				desc:"<b>*Not supported in JavaScript.</b> Matches a group before the main expression without including it in the result.",
+				desc:"<b>*在 JavaScript 中不被允许。</b> 断言自身出现的位置的前面能匹配表达式，不输出匹配内容。在一些执行环境中，长度不定的回顾断言是不被允许的。",
 				token:"(?<=ABC)"
 				},
 				{
 				id:"neglookbehind",
 				label: "negative lookbehind*",
-				desc:"<b>*Not supported in JavaScript.</b> Specifies a group that can not match before the main expression (if it matches, the result is discarded).",
+				desc:"<b>*在 JavaScript 中不被允许。</b> 断言此位置的前面不能匹配表达式 (如果它匹配成功，则这个文本不是匹配结果)。在一些执行环境中，长度不定的回顾断言是不被允许的。",
 				token:"(?&lt;!ABC)"
 				}
 			]
@@ -300,50 +300,50 @@ var library = {
 			{
 			label: "Quantifiers & Alternation",
 			id:"quants",
-			desc: "Quantifiers indicate that the preceding token must be matched a certain number of times. By default, quantifiers are greedy, and will match as many characters as possible."+
-				"<hr/>Alternation acts like a boolean OR, matching one sequence or another.",
+			desc: "量词限定它前面的元字符或捕获组的重复次数，默认情况下量词是贪婪的，会尽可能匹配多的字符。"+
+				"<hr/>Alternation 的作用类似布尔体系中的 OR, 匹配它两边的任意一个或全部表达式。",
 			kids: [
 				{
 				id:"plus",
-				desc:"Matches 1 or more of the preceding token.",
+				desc:"限定元字符或捕获组可以重复1次或多次。",
 				example:["b\\w+","b be bee beer beers"],
 				token:"+"
 				},
 				{
 				id:"star",
-				desc:"Matches 0 or more of the preceding token.",
+				desc:"限定元字符或捕获组可以重复任意次，包括0次。",
 				example:["b\\w*","b be bee beer beers"],
 				token:"*"
 				},
 				{
 				id:"quant",
 				label:"quantifier",
-				desc:"Matches the specified quantity of the previous token. "+
-					"<code>{1,3}</code> will match 1 to 3. "+
-					"<code>{3}</code> will match exactly 3. "+
-					"<code>{3,}</code> will match 3 or more. ",
+				desc:"限定元字符或捕获组可以重复范围内的次数。"+
+					"<code>{1,3}</code> 限定可以重复1到3次。 "+
+					"<code>{3}</code> 限定可以重复3次。 "+
+					"<code>{3,}</code> 限定可以重复3次或以上。",
 				example:["b\\w{2,3}","b be bee beer beers"],
 				token:"{1,3}"
 				},
 				{
 				id:"opt",
 				label:"optional",
-				desc:"Matches 0 or 1 of the preceding token, effectively making it optional.",
+				desc:"限定元字符或捕获组可以重复0次或1次，即它所限定的内容是可选的。",
 				example: ["colou?r", "color colour"],
 				token:"?"
 				},
 				{
 				id:"lazy",
-				desc:"Makes the preceding quantifier lazy, causing it to match as few characters as possible.",
-				ext:" By default, quantifiers are greedy, and will match as many characters as possible.",
+				desc:"使前面的量词转为懒惰模式，使其匹配尽可能少的字符。",
+				ext:"默认情况下量词是贪婪的，会尽可能匹配多的字符。",
 				example:["b\\w+?","b be bee beer beers"],
 				token:"?"
 				},
 				{
 				id:"alt",
 				label:"alternation",
-				desc:"Acts like a boolean OR. Matches the expression before or after the <code>|</code>.",
-				ext:"<p>It can operate within a group, or on a whole expression. The patterns will be tested in order.</p>",
+				desc:"作用类似布尔体系中的 OR, 匹配 <code>|</code> 两边的任意一个或全部表达式。",
+				ext:"<p>它可以在捕获组内被使用，也可以用于整个表达式。位于它两侧的表达式将按顺序进行匹配尝试。</p>",
 				example:["b(a|e|i)d","bad bud bod bed bid"],
 				token:"|"
 				}
@@ -352,44 +352,44 @@ var library = {
 
 			{
 			label: "Substitution",
-			desc: "These tokens are used in a substitution string to insert different parts of the match.",
+			desc: "这些元字符用于在替换表达式中对匹配的文本插入不同的内容。",
 			target:"subst",
 			kids: [
 				{
 				id:"subst_match",
 				label: "match",
-				desc:"Inserts the matched text.",
+				desc:"插入匹配的文本自身。",
 				token:"$$&"
 				},
 				{
 				id:"subst_num",
 				label: "capture group",
 				tip:"Inserts the results of capture group #{{group.num}}.",
-				desc:"Inserts the results of the specified capture group (ex. $3 will insert the third capture group).",
+				desc:"插入指定捕获组的内容 (比如 $3 会插入第三捕获组捕获的内容)。",
 				token:"$1"
 				},
 				{
 				id:"subst_pre",
 				label: "before match",
-				desc:"Inserts the portion of the source string that precedes the match.",
+				desc:"插入源字符串中位于匹配内容前的文本。",
 				token:"$$`"
 				},
 				{
 				id:"subst_post",
 				label: "after match",
-				desc:"Inserts the portion of the source string that follows the match.",
+				desc:"插入源字符串中位于匹配内容后的文本。",
 				token:"$$'"
 				},
 				{
 				id:"subst_$",
 				label: "escaped $",
-				desc:"Inserts a dollar sign character ($).",
+				desc:"插入一个美元符号 ($) 。",
 				token:"$$$$"
 				},
 				{
 				label: "escaped characters",
 				token: "\\n",
-				desc: "Escaped characters compatible with the JS string format, such as <code>\\n</code>, <code>\\t</code>, <code>\\x09</code>, & <code>\\u0009</code> are supported in the substitution string."
+				desc: "转义字符与JS兼容，比如 <code>\\n</code>, <code>\\t</code>, <code>\\x09</code>, & <code>\\u0009</code>  等都可以在替换表达式中使用。"
 				}
 			]
 			},
@@ -397,14 +397,14 @@ var library = {
 			id:"flags",
 			label:"Flags",
 			tooltip:"Expression flags change how the expression is interpreted. Click to edit.",
-			desc:"Expression flags change how the expression is interpreted. There are three flags in JS: i, g, and m. Flags follow the closing backslash of the expression (ex. <code>/.+/igm</code> ).",
+			desc:"修改表达式的标志可以改变表达式的解析方式。JS中有3个标志：i、g和m。标志位于反斜杠定界符的后边 (比如 <code>/.+/igm</code> ) 。",
 			target:"flags",
 			kids: [
 				{
 				id:"flag_i",
 				label: "ignore case",
-				desc:"Makes the whole expression case-insensitive.",
-				ext:" For example, <code>/aBc/i</code> would match <code>AbC</code>.",
+				desc:"让整个表达式对大小写不敏感。",
+				ext:" 比如， <code>/aBc/i</code> 会与 <code>AbC</code> 匹配。",
 				token:"i"
 				},
 				{
